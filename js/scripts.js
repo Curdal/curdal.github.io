@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
 	 * Countdown
 	/* ---------------------------------------------- */
 
-    jQuery('.countdown-container').countdown("2020/01/01", function(event) {
+    jQuery('.countdown-container').countdown("2017/01/01", function(event) {
         jQuery(this).html(event.strftime(''
             + '<div><div>%D</div><i>days</i></div>'
             + '<div><div>%H</div><i>hours</i></div>'
