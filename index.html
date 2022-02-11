@@ -1,93 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Curdal&apos;s Portfolio - Coming soon.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CDN -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700" rel="stylesheet" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/green/pace-theme-center-atom.css" rel="stylesheet">
+    <title>Curtis Page</title>
 
-    <!-- Vendors -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <style>
+        html, body {
+            background-color: #191919;
+            color: #fff;
+            font-family: 'Fira Code', monospace;
+            font-size: 24px;
+            line-height: 36px;
+            padding-top: 1.8rem;
+            padding-bottom: 1.8rem;
+        }
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        small {
+            font-size: 65%;
+        }
+
+        a {
+            color: #89CA1D;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #fff;
+            border-bottom: 3px solid #fff;
+            padding-bottom: 2.5px;
+        }
+
+        .container {
+            max-width: 840px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: auto;
+        }
+
+        .divider {
+            padding: 1.5rem 0;
+        }
+
+        @media screen and (max-width: 480px) {
+            html, body {
+                font-size: 16px;
+                line-height: 21px;
+            }
+
+            h1 {
+                line-height: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="wrapper">
-        <section class="module-hero overlay-light" style="background-image: url(img/background.jpg);">
-            <div class="content">
-                <div class="container wow fadeInUp">
-                    <!-- <img src="img/logo.png" alt="" class="logo"> -->
-                    <h1>Curdal&apos;s <strong>Portfolio</strong> is Coming <strong>soon.</strong></h1>
-                    <p class="lead">
-                        I am currently working on a website and it will be
-                        <br>
-                        <span class="h2">A.MA.<strong>ZING.</strong></span>
-                        <br>
-                        Stay tuned!
-                    </p>
-                    <div class="countdown-container"></div>
-                </div>
-            </div>
-        </section>
+    <main class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="56" heigth="56" viewBox="0 0 56 56" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+            <path d="M0 56V0h56v56H0Zm8.152-39.658h31.946v.087l8.177 7.627V8.179H8.152v8.163ZM24.11 48.08h24.15l-8.213-8.163H24.111v8.163ZM8.15 24.056V48.08h8.178V32.218h15.973l-8.213-8.162H8.152Z"/>
+        </svg>
 
-        <section id="contact" class="module-sm">
-            <a class="striped-icon divider inner-scroll" href="#contact">
-                <i class="fa fa-angle-down"></i>
-            </a>
+        <div class="divider"></div>
 
-            <div class="container wow fadeInUp">
+        <h1>Hi, I'm Curtis</h1>
 
-                <h3 class="module-title text-center">
-                    Want to contact me?
-                </h3>
-
-                <!-- <img src="img/logo.png" alt="" class="logo"> -->
-
-                <div class="social-icons social-icons-animated m-b-40">
-                    <p>
-                        Find me on these platforms:
-                    </p>
-
-                    <a style="visibility: visible; animation-name: fadeInUp; animation-delay: 0s;" data-wow-delay="0s" href="https://www.facebook.com/curdal9201" target="_blank" class="fa fa-facebook facebook wow fadeInUp animated"></a>
-                    <a style="visibility: visible; animation-name: fadeInUp; animation-delay: 0.3s;" data-wow-delay="0.44999999999999996s" href="https://www.instagram.com/curdal9201/" target="_blank" class="fa fa-instagram instagram wow fadeInUp animated"></a>
-                    <a style="visibility: visible; animation-name: fadeInUp; animation-delay: 0.45s;" data-wow-delay="0.3s" href="https://github.com/Curdal" target="_blank" class="fa fa-github github wow fadeInUp animated"></a>
-                    <a style="visibility: visible; animation-name: fadeInUp; animation-delay: 0.6s;" data-wow-delay="0.6s" href="https://www.behance.net/curdal" target="_blank" class="fa fa-behance behance wow fadeInUp animated"></a>
-                    <a style="visibility: visible; animation-name: fadeInUp; animation-delay: 0.75s;" data-wow-delay="0.75s" href="https://dribbble.com/curdal" target="_blank" class="fa fa-dribbble dribbble wow fadeInUp animated"></a>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="container">
-                <hr class="divider">
-
-                <div class="copyright text-center">
-                    <a href="/"><b>Curdal&apos;s Portfolio.</b></a>
-                    <br>
-                    &copy; 2016
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/scripts.js"></script>
-
+        <p>I am currently a Full stack Developer at <a href="https://twothreebird.com">Two Three Bird</a>.</p>
+        <p>A little bit about me:</p>
+        <ul>
+            <li>I'm a Laravel &amp; Docker fanboy <small>(if I must say so myself 😆)</small></li>
+            <li>I strongly dislike Wordpress <small>(just no ok? 🙅‍♂️)</small></li>
+            <li>AWS is where the party is at <small>(whoop whoop 🎉🎉)</small></li>
+            <li>Working from Home saves everybody ⌚ &amp; 💵</li>
+        </ul>
+        <p>If you feel like reaching out, get me on <a href="https://www.linkedin.com/in/curtis-page-a63a7b74">LinkedIn</a> or ... <br> maybe you wanna do it the good old-fashioned way?</p>
+        <p>👉 <a href="https://forms.gle/kEttPuLpRZcEzmZ66">Pop me a message</a></p>
+    </main>
 </body>
 </html>
