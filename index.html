@@ -2,85 +2,440 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <script>
+        try {
+            document.querySelector('meta[name="color-scheme"]').content = localStorage.getItem("color-scheme") ?? "light dark";
+        } catch {}
+    </script>
 
-    <title>Curtis Page</title>
+    <title>Curtis Page — Full Stack Developer</title>
+    <meta name="description" content="Curtis Page — Full stack developer at Two Three Bird. Laravel, Docker, and AWS enthusiast.">
+    <meta property="og:title" content="Curtis Page — Full Stack Developer">
+    <meta property="og:description" content="Full stack developer at Two Three Bird. Laravel & Docker fanboy, AWS enthusiast.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://curdal.github.io/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <style>
+        :root {
+            color-scheme: light dark;
+
+            &:has(> head > meta[name="color-scheme"][content="dark"]) {
+                color-scheme: dark;
+            }
+            &:has(> head > meta[name="color-scheme"][content="light"]) {
+                color-scheme: light;
+            }
+
+            --bg: light-dark(#f6f7f4, #191919);
+            --card: light-dark(#ffffff, #20211f);
+            --card-hover: light-dark(#fafbf8, #262724);
+            --surface: light-dark(#eceee8, #242522);
+            --text: light-dark(#171717, #f5f5f5);
+            --muted: light-dark(#5c6356, #9a9f95);
+            --accent: light-dark(#4d8200, #89CA1D);
+            --border: light-dark(#dde2d6, #2d2f2b);
+            --border-hover: light-dark(#c5ceba, #3e423b);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         html, body {
-            background-color: #191919;
-            color: #fff;
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Fira Code', monospace;
-            font-size: 24px;
-            line-height: 36px;
-            padding-top: 1.8rem;
-            padding-bottom: 1.8rem;
-        }
-
-        small {
-            font-size: 65%;
-        }
-
-        a {
-            color: #89CA1D;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #fff;
-            border-bottom: 3px solid #fff;
-            padding-bottom: 2.5px;
+            font-size: 16px;
+            line-height: 1.65;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .container {
-            max-width: 840px;
-            padding-left: 15px;
-            padding-right: 15px;
-            margin: auto;
+            max-width: 920px;
+            padding: clamp(2rem, 5vw, 3.75rem) 1.25rem;
+            margin: 0 auto;
         }
 
-        .divider {
-            padding: 1.5rem 0;
+        /* Top Bar */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.75rem;
         }
 
-        @media screen and (max-width: 480px) {
-            html, body {
-                font-size: 16px;
-                line-height: 21px;
+        .logo {
+            display: inline-flex;
+            color: var(--text);
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .logo:hover {
+            color: var(--accent);
+            transform: rotate(-3deg) scale(1.04);
+        }
+
+        .theme-btn {
+            font-family: inherit;
+            font-size: 0.78rem;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.4rem 0.75rem;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .theme-btn .label-light { display: none; }
+        .theme-btn .label-dark { display: inline; }
+
+        @media (prefers-color-scheme: light) {
+            :root:not(:has(> head > meta[name="color-scheme"][content="dark"])) .theme-btn .label-light { display: inline; }
+            :root:not(:has(> head > meta[name="color-scheme"][content="dark"])) .theme-btn .label-dark { display: none; }
+        }
+        :root:has(> head > meta[name="color-scheme"][content="light"]) .theme-btn .label-light { display: inline; }
+        :root:has(> head > meta[name="color-scheme"][content="light"]) .theme-btn .label-dark { display: none; }
+        :root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-btn .label-light { display: none; }
+        :root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-btn .label-dark { display: inline; }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.2;
+            margin: 0 0 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 0.52em;
+            height: 1.02em;
+            background: var(--accent);
+            vertical-align: -0.14em;
+            margin-left: 0.2rem;
+            @media (prefers-reduced-motion: no-preference) {
+                animation: blink 1.1s steps(1, end) infinite;
             }
+        }
 
-            h1 {
-                line-height: 32px;
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .lead {
+            font-size: clamp(1rem, 2.2vw, 1.18rem);
+            margin: 0 0 1.5rem;
+            max-width: 62ch;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            transition: color 0.15s ease, text-decoration-color 0.15s ease;
+        }
+
+        a:hover {
+            color: var(--text);
+            text-decoration-color: var(--accent);
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .pill-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1rem;
+            border-radius: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+        }
+
+        .pill-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .pill-link.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #111;
+            font-weight: 600;
+        }
+
+        .pill-link.primary:hover {
+            filter: brightness(1.08);
+            color: #111;
+        }
+
+        /* Bento Grid */
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            background: var(--card-hover);
+        }
+
+        .span-7 { grid-column: span 7; }
+        .span-5 { grid-column: span 5; }
+        .span-6 { grid-column: span 6; }
+        .span-12 { grid-column: span 12; }
+
+        @media (max-width: 760px) {
+            .span-7, .span-5, .span-6 { grid-column: span 12; }
+        }
+
+        .label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.85rem;
+            font-weight: 600;
+        }
+
+        .now-list {
+            margin: 0;
+            display: grid;
+            gap: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        .now-row {
+            display: grid;
+            grid-template-columns: 96px 1fr;
+            gap: 0.75rem;
+            align-items: baseline;
+        }
+
+        .now-key {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .now-val {
+            margin: 0;
+        }
+
+        @media (max-width: 480px) {
+            .now-row {
+                grid-template-columns: 1fr;
+                gap: 0.15rem;
             }
         }
+
+        .aside {
+            color: var(--muted);
+            font-size: 0.85em;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            padding: 0.32rem 0.7rem;
+            border-radius: 999px;
+            background: light-dark(rgba(77, 130, 0, 0.1), rgba(137, 202, 29, 0.1));
+            border: 1px solid light-dark(rgba(77, 130, 0, 0.28), rgba(137, 202, 29, 0.28));
+            color: var(--accent);
+        }
+
+        .tag.nope {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: rgba(239, 68, 68, 0.28);
+            color: light-dark(#dc2626, #f87171);
+            text-decoration: line-through;
+        }
+
+        .stats-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Theme-aware stats images */
+        .stats-light { display: none; }
+        .stats-dark { display: block; }
+
+        @media (prefers-color-scheme: light) {
+            :root:not(:has(> head > meta[name="color-scheme"][content="dark"])) .stats-light { display: block; }
+            :root:not(:has(> head > meta[name="color-scheme"][content="dark"])) .stats-dark { display: none; }
+        }
+        :root:has(> head > meta[name="color-scheme"][content="light"]) .stats-light { display: block; }
+        :root:has(> head > meta[name="color-scheme"][content="light"]) .stats-dark { display: none; }
+        :root:has(> head > meta[name="color-scheme"][content="dark"]) .stats-light { display: none; }
+        :root:has(> head > meta[name="color-scheme"][content="dark"]) .stats-dark { display: block; }
     </style>
 </head>
 <body>
     <main class="container">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="56" heigth="56" viewBox="0 0 56 56" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-            <path d="M0 56V0h56v56H0Zm8.152-39.658h31.946v.087l8.177 7.627V8.179H8.152v8.163ZM24.11 48.08h24.15l-8.213-8.163H24.111v8.163ZM8.15 24.056V48.08h8.178V32.218h15.973l-8.213-8.162H8.152Z"/>
-        </svg>
+        <header class="top-bar">
+            <a href="#" class="logo" aria-label="Curtis Page home">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="48" height="48" viewBox="0 0 56 56" shape-rendering="geometricPrecision">
+                    <path d="M0 56V0h56v56H0Zm8.152-39.658h31.946v.087l8.177 7.627V8.179H8.152v8.163ZM24.11 48.08h24.15l-8.213-8.163H24.111v8.163ZM8.15 24.056V48.08h8.178V32.218h15.973l-8.213-8.162H8.152Z"/>
+                </svg>
+            </a>
+            <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle color theme">
+                <span class="label-dark">☀ Light</span>
+                <span class="label-light">☾ Dark</span>
+            </button>
+        </header>
 
-        <div class="divider"></div>
+        <section class="hero">
+            <h1>Hi, I'm Curtis<span class="cursor" aria-hidden="true"></span></h1>
+            <p class="lead">
+                I am currently a Full stack Developer at <a href="https://twothreebird.com" target="_blank" rel="noopener">Two Three Bird</a>.
+                Building reliable web apps, clean Dockerized workflows, and keeping AWS happy from home.
+            </p>
+            <div class="cta-row">
+                <a class="pill-link primary" href="mailto:hello@curdal.co.za">👉 Pop me a message</a>
+                <a class="pill-link" href="https://github.com/curdal" target="_blank" rel="noopener">GitHub @curdal</a>
+                <a class="pill-link" href="https://www.linkedin.com/in/curtis-page-a63a7b74" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+        </section>
 
-        <h1>Hi, I'm Curtis</h1>
+        <section class="bento" aria-label="Profile details">
+            <div class="card span-7">
+                <div class="label">01 // Now &amp; About</div>
+                <dl class="now-list">
+                    <div class="now-row">
+                        <dt class="now-key">based</dt>
+                        <dd class="now-val">South Africa · Remote/Hybrid</dd>
+                    </div>
+                    <div class="now-row">
+                        <dt class="now-key">focus</dt>
+                        <dd class="now-val">Shipping Laravel apps, Dockerized setups &amp; AWS infra</dd>
+                    </div>
+                    <div class="now-row">
+                        <dt class="now-key">off_clock</dt>
+                        <dd class="now-val">Good coffee ☕ &amp; gaming 🎮</dd>
+                    </div>
+                    <div class="now-row">
+                        <dt class="now-key">hot_take</dt>
+                        <dd class="now-val">WordPress <span class="aside">(just no ok? 🙅‍♂️)</span></dd>
+                    </div>
+                </dl>
+            </div>
 
-        <p>I am currently a Full stack Developer at <a href="https://twothreebird.com">Two Three Bird</a>.</p>
-        <p>A little bit about me:</p>
-        <ul>
-            <li>I'm a Laravel &amp; Docker fanboy <small>(if I must say so myself 😆)</small></li>
-            <li>I strongly dislike Wordpress <small>(just no ok? 🙅‍♂️)</small></li>
-            <li>AWS is where the party is at <small>(whoop whoop 🎉🎉)</small></li>
-            <li>Working from Home saves everybody ⌚ &amp; 💵</li>
-        </ul>
-        <p>If you feel like reaching out, get me on <a href="https://www.linkedin.com/in/curtis-page-a63a7b74">LinkedIn</a> or ... <br> maybe you wanna do it the good old-fashioned way?</p>
-        <p>👉 <a href="mailto:hello@curdal.co.za">Pop me a message</a></p>
+            <div class="card span-5">
+                <div class="label">02 // Toolkit &amp; Vibe</div>
+                <div class="tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">Laravel</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">AWS</span>
+                    <span class="tag">Claude</span>
+                    <span class="tag">Antigravity</span>
+                    <span class="tag">Remote/Hybrid</span>
+                    <span class="tag nope">WordPress 🙅‍♂️</span>
+                </div>
+            </div>
+
+            <div class="card span-6">
+                <div class="label">03 // Preferred Languages</div>
+                <img class="stats-img stats-dark" loading="lazy" alt="Curtis's Preferred Toolkit" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/top-langs-dark.svg">
+                <img class="stats-img stats-light" loading="lazy" alt="Curtis's Preferred Toolkit" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/top-langs-light.svg">
+            </div>
+
+            <div class="card span-6">
+                <div class="label">04 // GitHub Activity</div>
+                <img class="stats-img stats-dark" loading="lazy" alt="Curtis's GitHub Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/stats-dark.svg">
+                <img class="stats-img stats-light" loading="lazy" alt="Curtis's GitHub Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/stats-light.svg">
+            </div>
+
+            <div class="card span-12">
+                <div class="label">05 // WakaTime</div>
+                <img class="stats-img stats-dark" loading="lazy" alt="Curtis's WakaTime Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/wakatime-dark.svg">
+                <img class="stats-img stats-light" loading="lazy" alt="Curtis's WakaTime Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/wakatime-light.svg">
+            </div>
+        </section>
     </main>
+
+    <script>
+        const meta = document.querySelector('meta[name="color-scheme"]');
+        const toggle = document.getElementById('themeToggle');
+        const mql = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function getRenderedScheme() {
+            try {
+                const stored = localStorage.getItem('color-scheme');
+                if (stored === 'light' || stored === 'dark') return stored;
+            } catch {}
+            return mql.matches ? 'dark' : 'light';
+        }
+
+        toggle.addEventListener('click', () => {
+            const next = getRenderedScheme() === 'dark' ? 'light' : 'dark';
+            const system = mql.matches ? 'dark' : 'light';
+            try {
+                if (next === system) {
+                    localStorage.removeItem('color-scheme');
+                    meta.content = 'light dark';
+                } else {
+                    localStorage.setItem('color-scheme', next);
+                    meta.content = next;
+                }
+            } catch {
+                meta.content = next;
+            }
+        });
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'color-scheme') {
+                meta.content = e.newValue ?? 'light dark';
+            }
+        });
+    </script>
 </body>
 </html>
