@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+    <style>
+        .keycap { fill: #171717; }
+        .letter { stroke: #f6f7f4; }
+        .cursor { fill: #4d8200; }
+        @media (prefers-color-scheme: dark) {
+            .keycap { fill: #f5f5f5; }
+            .letter { stroke: #191919; }
+            .cursor { fill: #89CA1D; }
+        }
+    </style>
+    <rect class="keycap" x="2" y="2" width="44" height="44" rx="11"/>
+    <path class="letter" d="M24.5 16H17.5C13.91 16 11 18.91 11 22.5V25.5C11 29.09 13.91 32 17.5 32H24.5" stroke-width="4.25" stroke-linecap="round"/>
+    <rect class="cursor" x="29.5" y="14.5" width="7" height="19" rx="1.75"/>
+</svg>

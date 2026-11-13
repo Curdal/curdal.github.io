@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 
     <style>
@@ -78,9 +79,18 @@
             transition: color 0.2s ease, transform 0.2s ease;
         }
 
+        .logo .logo-cursor {
+            fill: var(--accent);
+            transition: fill 0.2s ease;
+        }
+
         .logo:hover {
             color: var(--accent);
             transform: rotate(-3deg) scale(1.04);
+        }
+
+        .logo:hover .logo-cursor {
+            fill: var(--bg);
         }
 
         .theme-btn {
@@ -322,8 +332,10 @@
     <main class="container">
         <header class="top-bar">
             <a href="#" class="logo" aria-label="Curtis Page home">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="48" height="48" viewBox="0 0 56 56" shape-rendering="geometricPrecision">
-                    <path d="M0 56V0h56v56H0Zm8.152-39.658h31.946v.087l8.177 7.627V8.179H8.152v8.163ZM24.11 48.08h24.15l-8.213-8.163H24.111v8.163ZM8.15 24.056V48.08h8.178V32.218h15.973l-8.213-8.162H8.152Z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <rect x="2" y="2" width="44" height="44" rx="11" fill="currentColor"/>
+                    <path d="M24.5 16H17.5C13.91 16 11 18.91 11 22.5V25.5C11 29.09 13.91 32 17.5 32H24.5" stroke="var(--bg)" stroke-width="4.25" stroke-linecap="round"/>
+                    <rect class="logo-cursor" x="29.5" y="14.5" width="7" height="19" rx="1.75"/>
                 </svg>
             </a>
             <button type="button" class="theme-btn" id="themeToggle" aria-label="Toggle color theme">
