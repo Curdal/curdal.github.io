@@ -301,11 +301,16 @@
             color: var(--accent);
         }
 
-        .tag.nope {
-            background: rgba(239, 68, 68, 0.08);
-            border-color: rgba(239, 68, 68, 0.28);
-            color: light-dark(#dc2626, #f87171);
-            text-decoration: line-through;
+        .tag.remote {
+            background: light-dark(rgba(37, 99, 235, 0.1), rgba(96, 165, 250, 0.1));
+            border-color: light-dark(rgba(37, 99, 235, 0.35), rgba(96, 165, 250, 0.35));
+            color: light-dark(#1d4ed8, #60a5fa);
+        }
+
+        .tag.open {
+            background: light-dark(rgba(180, 110, 0, 0.1), rgba(251, 191, 36, 0.1));
+            border-color: light-dark(rgba(180, 110, 0, 0.35), rgba(251, 191, 36, 0.35));
+            color: light-dark(#b45309, #fbbf24);
         }
 
         .stats-img {
@@ -313,6 +318,10 @@
             height: auto;
             border-radius: 8px;
         }
+
+        /* Crop the baked-in SVG titles (48px of 165px); the card labels already say it */
+        .crop-langs { margin-top: -15%; clip-path: inset(29.1% 0 0 0); }
+        .crop-waka { margin-top: -9.7%; clip-path: inset(29.1% 0 0 0); }
 
         /* Theme-aware stats images */
         .stats-light { display: none; }
@@ -363,11 +372,11 @@
                 <dl class="now-list">
                     <div class="now-row">
                         <dt class="now-key">based</dt>
-                        <dd class="now-val">South Africa · Remote/Hybrid</dd>
+                        <dd class="now-val">Cape Town · South Africa 📍</dd>
                     </div>
                     <div class="now-row">
                         <dt class="now-key">focus</dt>
-                        <dd class="now-val">Shipping Laravel apps, Dockerized setups &amp; AWS infra</dd>
+                        <dd class="now-val">Shipping Laravel apps, Dockerized setups &amp; AWS infra 🚀</dd>
                     </div>
                     <div class="now-row">
                         <dt class="now-key">off_clock</dt>
@@ -375,7 +384,7 @@
                     </div>
                     <div class="now-row">
                         <dt class="now-key">hot_take</dt>
-                        <dd class="now-val">WordPress <span class="aside">(just no ok? 🙅‍♂️)</span></dd>
+                        <dd class="now-val">Boring tech ships. 💡</dd>
                     </div>
                 </dl>
             </div>
@@ -393,8 +402,8 @@
                     <span class="tag">GitHub</span>
                     <span class="tag">Claude</span>
                     <span class="tag">Antigravity</span>
-                    <span class="tag">Remote/Hybrid</span>
-                    <span class="tag nope">WordPress 🙅‍♂️</span>
+                    <span class="tag remote">Remote/Hybrid</span>
+                    <span class="tag open">Open to freelance</span>
                 </div>
             </div>
 
@@ -403,31 +412,31 @@
                 <dl class="now-list">
                     <div class="now-row">
                         <dt class="now-key">billing</dt>
-                        <dd class="now-val">Multi-tenant Laravel app that chases overdue invoices for SMEs: accounting sync, WhatsApp reminders, one-tap payment links <span class="aside">(building)</span></dd>
+                        <dd class="now-val">Multi-tenant Laravel app that chases overdue invoices for SMEs: accounting sync, WhatsApp reminders, one-tap payment links 🧾 <span class="aside">(building)</span></dd>
                     </div>
                     <div class="now-row">
                         <dt class="now-key">trade</dt>
-                        <dd class="now-val">Legal-intelligence search over customs &amp; tariff regulation: FastAPI, Nuxt, Postgres + pgvector <span class="aside">(building)</span></dd>
+                        <dd class="now-val">Legal-intelligence search over customs &amp; tariff regulation: FastAPI, Nuxt, Postgres + pgvector 🌍 <span class="aside">(building)</span></dd>
                     </div>
                     <div class="now-row">
                         <dt class="now-key">aws</dt>
-                        <dd class="now-val">Terraform-managed AWS platform (ECS, multi-AZ VPC) for a fleet of Laravel apps</dd>
+                        <dd class="now-val">Terraform-managed AWS platform (ECS, multi-AZ VPC) for a fleet of Laravel apps ☁️</dd>
                     </div>
                     <div class="now-row">
                         <dt class="now-key">docker</dt>
-                        <dd class="now-val">Shared, versioned PHP/Docker base images used across every service in the fleet</dd>
+                        <dd class="now-val">Shared, versioned PHP/Docker base images used across every service in the fleet 🐳</dd>
                     </div>
                     <div class="now-row">
                         <dt class="now-key">security</dt>
-                        <dd class="now-val">Internal security-awareness &amp; policy-acknowledgement platform: Laravel, Livewire, tamper-evident audit ledger</dd>
+                        <dd class="now-val">Internal security-awareness &amp; policy-acknowledgement platform: Laravel, Livewire, tamper-evident audit ledger 🔐</dd>
                     </div>
                 </dl>
             </div>
 
             <div class="card span-6">
                 <div class="label">04 // Preferred Languages</div>
-                <img class="stats-img stats-dark" loading="lazy" alt="Curtis's Preferred Toolkit" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/top-langs-dark.svg">
-                <img class="stats-img stats-light" loading="lazy" alt="Curtis's Preferred Toolkit" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/top-langs-light.svg">
+                <img class="stats-img stats-dark crop-langs" loading="lazy" alt="Curtis's Preferred Toolkit" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/top-langs-dark.svg">
+                <img class="stats-img stats-light crop-langs" loading="lazy" alt="Curtis's Preferred Toolkit" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/top-langs-light.svg">
             </div>
 
             <div class="card span-6">
@@ -438,8 +447,8 @@
 
             <div class="card span-12">
                 <div class="label">06 // WakaTime</div>
-                <img class="stats-img stats-dark" loading="lazy" alt="Curtis's WakaTime Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/wakatime-dark.svg">
-                <img class="stats-img stats-light" loading="lazy" alt="Curtis's WakaTime Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/wakatime-light.svg">
+                <img class="stats-img stats-dark crop-waka" loading="lazy" alt="Curtis's WakaTime Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/wakatime-dark.svg">
+                <img class="stats-img stats-light crop-waka" loading="lazy" alt="Curtis's WakaTime Stats" src="https://raw.githubusercontent.com/curdal/curdal/main/profile/wakatime-light.svg">
             </div>
 
         </section>
